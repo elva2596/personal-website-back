@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const config =  require("./config/default.js")
+const config =  require("./config/default.js");
 const db = require('./mongodb')
 const bodyParser = require("body-parser")
 const routes = require('./routes')

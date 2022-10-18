@@ -6,7 +6,7 @@ const getLastDocSeq = async () => {
 }
 
 // reset order everyDay
-const resetOrder = async () => {
+const resetExhOrder = async () => {
   const docs = await ExhModel.find().sort({"order": 1}).exec();
   const updates = docs.map((doc, index) => ({
     updateOne: { 
@@ -86,7 +86,7 @@ const createExhibition = async (req,res)=>{
 
 const getExhitions = (req,res)=>{
   ExhModel.find({})
-            .sort({"_id": -1})
+            .sort({"order": -1})
             .exec()
             .then(works=>{
               res.send({
@@ -163,5 +163,7 @@ module.exports = {
   getExhitions,
   deleteExhibition,
   findExhById,
-  updateExh
+  updateExh,
+  sortWork,
+  resetExhOrder
 }

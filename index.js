@@ -8,13 +8,19 @@ const dotenv = require('dotenv')
 const compression = require('compression');
 const schedule = require('node-schedule');
 const { resetOrder } = require("./controllers/work");
+const { resetExhOrder } = require("./controllers/exhibition");
 console.log('resetOrder:', resetOrder)
 // resetOrder();
 // test order重置。
 // setTimeout(() => {
-//   resetOrder()
+
+//   resetExhOrder();
+//   // resetOrder()
+  
 // }, 1000)
 const resetOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetOrder);
+
+const resetOrderJob2 = schedule.scheduleJob({hour: 3, minute: 49}, resetExhOrder);
 dotenv.config();
 app.use(compression())
 app.use(bodyParser.json());

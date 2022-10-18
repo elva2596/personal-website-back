@@ -6,4 +6,5 @@ router.get("/exhibitions",exhibition.getExhitions)
 router.delete("/exhibition",exhibition.deleteExhibition)
 router.get("/exhibition/:id",exhibition.findExhById)
 router.put("/exhibition",exhibition.updateExh)
+router.put("/sortexh", exhibition.sortWork);
 module.exports = router

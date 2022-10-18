@@ -43,7 +43,10 @@ const exhSchema = new Schema({
       imageUrl:String,
       count:String
     },
-  ]
+  ],
+  order: Number
 })
+
+exhSchema.index({order: 1});
 const ExhModel = mongoose.model("Exhibition",exhSchema);
 module.exports = ExhModel

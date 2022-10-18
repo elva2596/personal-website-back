@@ -88,7 +88,7 @@ const getWorks = async (req,res) => {
   // console.log('req:', req.query)
   try {
     const count = await WorkModel.count();
-    const query = WorkModel.find({}, {works: 0}).sort({"order": -1});
+    const query = WorkModel.find({}).sort({"order": -1});
     let hasMore = false;
     if(pageSize && pageNum) {
       await query.limit(Number(pageSize)).skip((Number(pageNum) - 1) * pageSize);

@@ -19,7 +19,7 @@ const createPub = (req,res)=>{
               })
 }
 const getPublications = (req,res)=>{
-  PubModel.find({})
+  PubModel.find({}).sort({"_id": -1})
             .exec()
             .then(works=>{
               res.send({

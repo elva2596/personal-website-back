@@ -37,7 +37,7 @@ const findTextById = (req,res)=>{
           })
 }
 const getTexts = (req,res)=>{
-  TextModel.find({},{content_cn:0,content_en:0})
+  TextModel.find({},{content_cn:0,content_en:0}).sort({"_id": -1})
             .exec()
             .then(works=>{
               res.send({

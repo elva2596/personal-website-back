@@ -18,7 +18,7 @@ const createNew = (req,res)=>{
             })
 }
 const getNews = (req,res)=>{
-  NewModel.find({})
+  NewModel.find({}).sort({"_id": -1})
           .then(news=>{
             res.send({
               status:1,

@@ -14,8 +14,8 @@ console.log('resetOrder:', resetOrder)
 // test order重置。
 // setTimeout(() => {
 
-//   resetExhOrder();
-//   // resetOrder()
+//   // resetExhOrder();
+//   resetOrder()
   
 // }, 1000)
 const resetOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetOrder);

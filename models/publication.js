@@ -1,12 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// {
-//   content_cn:"",
-//   content_en:"",
-//   coverUrl:"",
-//   tittle_en:"",
-//   tittle_cn:""
-// }
 const PubSchema = new Schema({
   content_cn:String,
   content_en:String,
@@ -14,7 +7,10 @@ const PubSchema = new Schema({
   tittle_en:String,
   tittle_cn:String,
   create_time_cn:String,
-  create_time_en:String
+  create_time_en:String,
+  order: Number
 })
+
+PubSchema.index({order: 1});
 const PubModel = mongoose.model("Publication",PubSchema);
 module.exports = PubModel

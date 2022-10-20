@@ -27,10 +27,10 @@ const sortWork = async (req, res) => {
   console.log('order:', preId, nextId, curId);
   let preOrder, curOrder, nextOrder;
   if(!preId) {
-    const nextOrder = await findPreCard(nextId);
+    nextOrder = await findPreCard(nextId);
     curOrder = nextOrder + 512;
   } else if(!nextId) {
-    const preOrder = await findPreCard(preId);
+    preOrder = await findPreCard(preId);
     curOrder = preOrder - 512;
   } else {
     const res = await Promise.all([findPreCard(preId), findPreCard(nextId)]).catch(err => {

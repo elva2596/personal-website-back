@@ -5,5 +5,6 @@ router.post("/publication",publication.createPub)
 router.get("/publications",publication.getPublications)
 router.delete("/publication",publication.deletePublication)
 router.get("/publication/:id",publication.findPubById)
-router.put("/publication",publication.updatePub)
+router.put("/publication",publication.updatePub);
+router.put("/sortpub", publication.sortPubOrder);
 module.exports = router

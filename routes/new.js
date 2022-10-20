@@ -6,4 +6,5 @@ router.get("/news",newInfo.getNews)
 router.get("/new/:id",newInfo.findNewById)
 router.delete("/new",newInfo.deleteNew)
 router.put("/new",newInfo.updateNew)
+router.put("/sortnews", newInfo.sortNewsOrder);
 module.exports = router

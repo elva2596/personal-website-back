@@ -10,21 +10,24 @@ const schedule = require('node-schedule');
 const { resetOrder } = require("./controllers/work");
 const { resetExhOrder } = require("./controllers/exhibition");
 const { resetPubOrder } = require("./controllers/Publication");
+const { resetNewsOrder } = require("./controllers/new");
 console.log('resetOrder:', resetOrder)
 // resetOrder();
 // test order重置。
-// setTimeout(() => {
+setTimeout(() => {
 
-//   // resetExhOrder();
-//   // resetOrder()
-//   resetPubOrder();
+  // resetExhOrder();
+  // resetOrder()
+  // resetPubOrder();
+  // resetNewsOrder();
   
-// }, 1000)
+}, 1000)
 const resetOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetOrder);
 
 const resetOrderJob2 = schedule.scheduleJob({hour: 3, minute: 49}, resetExhOrder);
 
 const resetPubOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetPubOrder);
+const resetNewsOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetNewsOrder);
 dotenv.config();
 app.use(compression())
 app.use(bodyParser.json());

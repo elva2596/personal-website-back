@@ -13,7 +13,8 @@ const newSchema = new Schema({
     content_cn:String,
     content_en:String,
     tittle_cn:String,
-    tittle_en:String
+    tittle_en:String,
+    order: Number
 })
 const NewModel = mongoose.model("New",newSchema);
 module.exports = NewModel

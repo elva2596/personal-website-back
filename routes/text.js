@@ -6,4 +6,5 @@ router.get("/text/:id",text.findTextById)
 router.get("/texts",text.getTexts)
 router.delete("/text",text.deleteText)
 router.put("/text",text.updateText)
+router.put("/sorttexts", text.sortTextsOrder);
 module.exports = router

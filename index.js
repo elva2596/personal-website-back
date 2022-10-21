@@ -11,17 +11,18 @@ const { resetOrder } = require("./controllers/work");
 const { resetExhOrder } = require("./controllers/exhibition");
 const { resetPubOrder } = require("./controllers/Publication");
 const { resetNewsOrder } = require("./controllers/new");
+const { resetTextsOrder } = require("./controllers/text");
 console.log('resetOrder:', resetOrder)
 // resetOrder();
 // test order重置。
-setTimeout(() => {
-
-  // resetExhOrder();
-  // resetOrder()
-  // resetPubOrder();
-  // resetNewsOrder();
+// setTimeout(() => {
+//   resetTextsOrder()
+//   // resetExhOrder();
+//   // resetOrder()
+//   // resetPubOrder();
+//   // resetNewsOrder();
   
-}, 1000)
+// }, 1000)
 const resetOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetOrder);
 
 const resetOrderJob2 = schedule.scheduleJob({hour: 3, minute: 49}, resetExhOrder);

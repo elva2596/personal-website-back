@@ -15,7 +15,8 @@ const textSchema = new Schema({
   tittle_en:String,
   authorInfo_cn:String,
   authorInfo_en:String,
-  fileList:[{name:String,url:String}]
+  fileList:[{name:String,url:String}],
+  order: Number
 })
 const TextModel = mongoose.model("Text",textSchema);
 module.exports = TextModel

@@ -15,20 +15,30 @@ const { resetTextsOrder } = require("./controllers/text");
 console.log('resetOrder:', resetOrder)
 // resetOrder();
 // test order重置。
-// setTimeout(() => {
-//   resetTextsOrder()
-//   // resetExhOrder();
-//   // resetOrder()
-//   // resetPubOrder();
-//   // resetNewsOrder();
+setTimeout(() => {
+  // resetTextsOrder()
+  // resetExhOrder();
+  // resetOrder()
+  // resetPubOrder();
+  // resetNewsOrder();
   
-// }, 1000)
+}, 1000)
+
+// 作品order reset
 const resetOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetOrder);
 
+// 展览order reset
 const resetOrderJob2 = schedule.scheduleJob({hour: 3, minute: 49}, resetExhOrder);
 
+// 出版物 order reset
 const resetPubOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetPubOrder);
+
+// 新闻order reset
 const resetNewsOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetNewsOrder);
+
+// 文本order reset
+const resetTextsOrderJob = schedule.scheduleJob({hour: 3, minute: 49}, resetTextsOrder);
+
 dotenv.config();
 app.use(compression())
 app.use(bodyParser.json());

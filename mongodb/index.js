@@ -1,6 +1,9 @@
 const config = require("../config/default");
 const mongoose = require("mongoose");
-mongoose.connect(config.url,{server:{reconnectTries: Number.MAX_VALUE}});
+mongoose.connect(config.url,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  server:{reconnectTries: Number.MAX_VALUE}});
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('err',(err)=>{

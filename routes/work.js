@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const work = require('../controllers/work');
-router.post("/work",work.createWork)
+const verifyToken = require("../middlewares/index");
+router.post("/work",verifyToken, work.createWork)
 router.get("/work",work.getWorks)
-router.delete("/work",work.deleteWork)
+router.delete("/work",verifyToken,work.deleteWork)
 router.get("/work/:id",work.findWorksById)
-router.put("/work",work.updateWork);
-router.put("/sort", work.sortWork);
+router.put("/work",verifyToken, work.updateWork);
+router.put("/sort", verifyToken, work.sortWork);
 module.exports = router

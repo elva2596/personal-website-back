@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const newInfo = require('../controllers/new');
-router.post("/new",newInfo.createNew)
+const verifyToken = require("../middlewares/index");
+router.post("/new",verifyToken, newInfo.createNew)
 router.get("/news",newInfo.getNews)
 router.get("/new/:id",newInfo.findNewById)
-router.delete("/new",newInfo.deleteNew)
-router.put("/new",newInfo.updateNew)
-router.put("/sortnews", newInfo.sortNewsOrder);
+router.delete("/new",verifyToken, newInfo.deleteNew)
+router.put("/new",verifyToken, newInfo.updateNew)
+router.put("/sortnews", verifyToken, newInfo.sortNewsOrder);
 module.exports = router

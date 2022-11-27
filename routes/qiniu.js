@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const addImg = require("../controllers/qiniu")
-router.post("/admin/imgs",addImg)
+const verifyToken = require("../middlewares/index");
+const addImg = require("../controllers/qiniu");
+const getToken = require("../controllers/getToken");
+router.post("/admin/imgs",addImg);
+router.get("/token", verifyToken, getToken)
 module.exports = router;

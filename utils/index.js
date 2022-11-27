@@ -10,7 +10,6 @@ const formUploader = new qiniu.form_up.FormUploader(config);
 const putExtra = new qiniu.form_up.PutExtra();
 const bucketHost = process.env.BUCKET_HOST
 
-console.log("BUCKET_HOST:", bucketHost)
 // 创建token
 const createToken = ()=>{
   const mac = new qiniu.auth.digest.Mac(process.env.ACCESS_KEY,process.env.SECRET_KEY)

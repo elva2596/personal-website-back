@@ -1,58 +1,52 @@
-const BioModel = require('../models/biography');
-const createBio = (req,res)=>{
-  const instanceBio = new BioModel(req.body)
-  instanceBio.save()
-              .then(work=>{
-                res.send({
-                  status:1,
-                  msg:"success",
-                  data:''
-                })
-              })
-              .catch(err=>{
-                res.send({
-                  status:-1,
-                  msg:"err",
-                  data:err.message.toString()
-                })
-              })
+const BioModel = require('../models/biography')
+const createBio = async (req, res) => {
+  try {
+    const instanceBio = new BioModel(req.body)
+    await instanceBio.save()
+    res.send({
+      status: 1,
+      msg: 'success',
+      data: ''
+    })
+  } catch (error) {
+    res.send({
+      status: -1,
+      msg: 'err',
+      data: error.message.toString()
+    })
+  }
 }
-const getBio = (req,res)=>{
-  BioModel.find({})
-          .exec()
-          .then(works=>{
-            res.send({
-              status:1,
-              msg:"success",
-              data:works
-            })
-          })
-          .catch(err=>{
-            res.send({
-              status:-1,
-              msg:"err",
-              data:err.message.toString()
-            })
-          })
+const getBio = async (req, res) => {
+  try {
+    const result = await BioModel.findOne({}).exec()
+    res.send({
+      status: 1,
+      msg: 'success',
+      data: result
+    })
+  } catch (error) {
+    res.send({
+      status: -1,
+      msg: 'err',
+      data: error.message.toString()
+    })
+  }
 }
-const updateBio = (req,res)=>{
-  BioModel.update({_id:req.body._id},req.body)
-          .exec()
-          .then(re=>{
-            console.log(re)
-            res.send({
-              status:1,
-              msg:"success",
-              data:""
-            })
-          })
-          .catch(err=>{
-            res.send({
-              status:-1,
-              msg:"err",
-              data:err.message.toString()
-            })
-          })
+const updateBio = async (req, res) => {
+  try {
+    await BioModel.updateOne({}, { $set: req.body }).exec()
+    res.send({
+      status: 1,
+      msg: 'success',
+      data: ''
+    })
+  } catch (error) {
+    res.send({
+      status: -1,
+      msg: 'err',
+      data: error.message.toString()
+    })
+  }
 }
 module.exports = {
   createBio,

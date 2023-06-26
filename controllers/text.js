@@ -67,7 +67,7 @@ const sortTextsOrder = async (req, res) => {
 
 const createText = async (req,res)=>{
   const workInfo = req.body
-  const instanceWork = new NewModel(workInfo);
+  const instanceWork = new TextModel(workInfo);
   const nextSeq = await getLastDocSeq() + 1024;
   instanceWork.order = nextSeq;
   try {

@@ -1,11 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const work = require('../controllers/work');
-const verifyToken = require("../middlewares/index");
-router.post("/work",verifyToken, work.createWork)
-router.get("/work",work.getWorks)
-router.delete("/work",verifyToken,work.deleteWork)
-router.get("/work/:id",work.findWorksById)
-router.put("/work",verifyToken, work.updateWork);
-router.put("/sort", verifyToken, work.sortWork);
+const express = require('express')
+const router = express.Router()
+const work = require('../controllers/work')
+const verifyToken = require('../middlewares/index')
+router.post('/work', verifyToken, work.createWork)
+router.delete('/work/:id', verifyToken, work.deleteWork)
+router.delete('/work', verifyToken, work.deleleAllWorks)
+router.get('/work', work.getWorks)
+router.get('/work/:id', work.findWorksById)
+router.put('/work/:id', verifyToken, work.updateWork)
+router.put('/sortwork', verifyToken, work.sortWork)
 module.exports = router

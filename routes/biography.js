@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const biograhpy = require('../controllers/biography');
-const verifyToken = require("../middlewares/index");
-router.get("/biograhpy",biograhpy.getBio)
-router.post("/biograhpy",verifyToken, biograhpy.createBio)
-router.put("/biograhpy",verifyToken,biograhpy.updateBio)
+const express = require('express')
+const router = express.Router()
+const biography = require('../controllers/biography')
+const verifyToken = require('../middlewares/index')
+router.get('/biography', biography.getBio)
+router.post('/biography', verifyToken, biography.createBio)
+router.put('/biography', verifyToken, biography.updateBio)
 module.exports = router

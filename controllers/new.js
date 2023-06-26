@@ -70,7 +70,55 @@ const createNew = async (req,res)=>{
   const nextSeq = await getLastDocSeq() + 1024;
   instanceWork.order = nextSeq;
   try {
-    await instanceWork.save();
+    const {_id: id} = await instanceWork.save();
+    res.send({
+      status:1,
+      msg:"success",
+      id
+    })
+  } catch (error) {
+    res.send({
+      status:-1,
+      msg:"err",
+      data:error.message.toString()
+    })
+  }
+}
+const getNews = async (req,res)=>{
+  try {
+    const news = await NewModel.find({}).sort({"order": -1});
+    res.send({
+      status:1,
+      msg:"success",
+      data:news
+    })
+  } catch (error) {
+    res.send({
+      status:-1,
+      msg:"err",
+      data:error.message.toString()
+    })
+  }
+}
+const findNewById = async (req,res)=>{
+  try {
+    const result = await NewModel.findById(req.params.id).exec();
+    res.send({
+      status:1,
+      msg:"success",
+      data:result
+    })
+  } catch (error) {
+    res.send({
+      status:-1,
+      msg:"err",
+      data:erorr.message.toString()
+    })
+  }
+}
+const deleteNew = async (req,res)=>{
+  try {
+    await NewModel.remove({_id:req.query.id});
     res.send({
       status:1,
       msg:"success",
@@ -84,77 +132,23 @@ const createNew = async (req,res)=>{
     })
   }
 }
-const getNews = (req,res)=>{
-  NewModel.find({}).sort({"order": -1})
-          .then(news=>{
-            res.send({
-              status:1,
-              msg:"success",
-              data:news
-            })
-          })
-          .catch(err=>{
-            res.send({
-              status:-1,
-              msg:"err",
-              data:err.message.toString()
-            })
-          })
-}
-const findNewById = (req,res)=>{
-  console.log(req.params.id)
-  NewModel.findById(req.params.id)
-          .exec()
-          .then(re=>{
-            res.send({
-              status:1,
-              msg:"success",
-              data:re
-            })
-          })
-          .catch((err) => {
-            res.send({
-              status:-1,
-              msg:"err",
-              data:err.message.toString()
-            })
-          })
-}
-const deleteNew = (req,res)=>{
-  NewModel.remove({_id:req.query.id})
-            .then(re=>{
-              res.send({
-                status:1,
-                msg:"success",
-                data:''
-              })
-            })
-            .catch(err=>{
-              res.send({
-                status:-1,
-                msg:"err",
-                data:err.message.toString()
-              })
-            })
-}
-const updateNew = (req,res)=>{
-  NewModel.update({_id:req.body._id},req.body)
-          .exec()
-          .then(re=>{
-            console.log(re)
-            res.send({
-              status:1,
-              msg:"success",
-              data:""
-            })
-          })
-          .catch(err=>{
-            res.send({
-              status:-1,
-              msg:"err",
-              data:err.message.toString()
-            })
-          })
+const updateNew = async (req,res)=>{
+  try {
+    const result = await NewModel.updateOne({_id:req.body.id},{
+      $set: req.body
+    }).exec();
+    res.send({
+      status:1,
+      msg:"success",
+      data:""
+    })
+  } catch (error) {
+    res.send({
+      status:-1,
+      msg:"err",
+      data:error.message.toString()
+    })
+  }
 }
 module.exports = {
   createNew,

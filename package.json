@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=production pm2 start index.js --node-args='--harmony' --name 'server'"
   },
@@ -22,11 +23,17 @@
     "moment": "^2.18.1",
     "mongoose": "^4.11.5",
     "mongoose-sequence": "^5.3.1",
+    "nanoid": "^4.0.2",
     "node-schedule": "^2.1.0",
     "objectid-to-timestamp": "^1.3.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "pm2": "^5.2.0",
-    "qiniu": "^7.0.6"
+    "qiniu": "^7.0.6",
+    "uuid": "^9.0.0",
+    "wysiwyg-editor-node-sdk-qn": "^0.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

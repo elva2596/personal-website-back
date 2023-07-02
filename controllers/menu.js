@@ -1,7 +1,7 @@
-const HomeModel = require('../models/home')
-const getHome = async (req, res) => {
+const MenuModel = require('../models/menu')
+const getMenu = async (req, res) => {
   try {
-    const result = await HomeModel.findOneAndUpdate(
+    const result = await MenuModel.findOneAndUpdate(
       {},
       {},
       {
@@ -24,10 +24,10 @@ const getHome = async (req, res) => {
   }
 }
 
-const updateHome = async (req, res) => {
+const updateMenu = async (req, res) => {
   console.log('req:', req.body)
   try {
-    const result = await HomeModel.updateOne({}, { $set: req.body }).exec()
+    const result = await MenuModel.findOneAndUpdate({}, { $set: { routes: req.body } }, { new: true })
     console.log('result:', result)
     res.send({
       status: 1,
@@ -43,6 +43,6 @@ const updateHome = async (req, res) => {
   }
 }
 module.exports = {
-  getHome,
-  updateHome
+  getMenu,
+  updateMenu
 }

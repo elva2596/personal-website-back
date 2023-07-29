@@ -12,6 +12,11 @@ const { resetExhOrder } = require('./controllers/exhibition')
 const { resetPubOrder } = require('./controllers/Publication')
 const { resetNewsOrder } = require('./controllers/new')
 const { resetTextsOrder } = require('./controllers/text')
+
+const https = require('https')
+const http = require('http')
+var path = require('path')
+const fs = require('fs')
 console.log('resetOrder:', resetOrder)
 // resetOrder();
 // test order重置。
@@ -54,6 +59,20 @@ app.all('*', function (req, res, next) {
 })
 
 routes(app)
+const httpServer = http.createServer(app)
+
+var privateCrt = fs.readFileSync(path.join(process.cwd(), 'config/caoyu.art_bundle.crt'), 'utf8')
+var privateKey = fs.readFileSync(path.join(process.cwd(), 'config/caoyu.art.key'), 'utf8')
+const HTTPS_OPTOIN = {
+  key: privateKey,
+  cert: privateCrt
+}
+const SSL_PORT = 8090
+const httpsServer = https.createServer(HTTPS_OPTOIN, app)
+httpsServer.listen(SSL_PORT, () => {
+  console.log(`HTTPS Server is running on: https://localhost:${SSL_PORT}`)
+})
+
 app.set('port', config.port)
 app.listen(app.get('port'), () => {
   console.log(`Express server is listening port: ${config.port}`)

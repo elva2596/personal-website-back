@@ -1,5 +1,6 @@
 const HomeModel = require('../models/home')
 const getHome = async (req, res) => {
+  console.log('req receive')
   try {
     const result = await HomeModel.findOneAndUpdate(
       {},

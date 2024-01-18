@@ -59,21 +59,7 @@ app.all('*', function (req, res, next) {
 })
 
 routes(app)
-const httpServer = http.createServer(app)
-
-var privateCrt = fs.readFileSync(path.join(process.cwd(), 'config/caoyu.art_bundle.crt'), 'utf8')
-var privateKey = fs.readFileSync(path.join(process.cwd(), 'config/caoyu.art.key'), 'utf8')
-const HTTPS_OPTOIN = {
-  key: privateKey,
-  cert: privateCrt
-}
-const SSL_PORT = 8090
-const httpsServer = https.createServer(HTTPS_OPTOIN, app)
-httpsServer.listen(SSL_PORT, () => {
-  console.log(`HTTPS Server is running on: https://localhost:${SSL_PORT}`)
-})
-
-app.set('port', config.port)
+app.set('port', process.env.PORT)
 app.listen(app.get('port'), () => {
-  console.log(`Express server is listening port: ${config.port}`)
+  console.log(`Express server is listening port: ${process.env.PORT}`)
 })

@@ -18,4 +18,5 @@ module.exports = (app) => {
   app.use('/api', require('./saveContent'))
   app.use('/api', require('./menu.js'))
   app.use('/api', require('./video.js'))
+  app.use('/api', require('./downloadUrl.js'))
 }

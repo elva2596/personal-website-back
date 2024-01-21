@@ -5,7 +5,6 @@ const getToken = (req, res) => {
   // console.log('mac:', mac)
   const ops = { scope: process.env.BUCKET }
   const token = new qiniu.rs.PutPolicy(ops).uploadToken(mac)
-  console.log('token:', token)
   res.send({
     status: 200,
     msg: 'success',

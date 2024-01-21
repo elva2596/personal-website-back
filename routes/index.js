@@ -12,11 +12,7 @@ module.exports = (app) => {
   app.use('/api', require('./text'))
   app.use('/api', require('./biography'))
   app.use('/api', require('./contact'))
-  app.use('/api', require('./uploadImage'))
-  app.use('/api', require('./uploadFile'))
-  app.use('/api', require('./uploadVideo'))
   app.use('/api', require('./saveContent'))
   app.use('/api', require('./menu.js'))
   app.use('/api', require('./video.js'))
-  app.use('/api', require('./downloadUrl.js'))
 }

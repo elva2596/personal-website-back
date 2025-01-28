@@ -34,7 +34,7 @@ const getContact = async (req, res) => {
 }
 const updateContact = async (req, res) => {
   try {
-    await ContactModel.updateOne({}, { $set: req.body }).exec()
+    const params = await ContactModel.updateOne({}, { $set: req.body }, { upsert: true }).exec()
     res.send({
       status: 1,
       msg: 'success',

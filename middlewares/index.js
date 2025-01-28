@@ -3,7 +3,7 @@ const AdminModel = require('../models/admin')
 module.exports = (req, res, next) => {
   if (req.headers['authorization']) {
     const token = req.headers['authorization'].split(' ')[1]
-    // console.log(` req.headers["authorization"]:`,  req.headers["authorization"])
+    // console.log(` req.headers["authorization"]:`, req.headers['authorization'])
     jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
       if (err) {
         res.send({ status: 401, msg: err.name, data: 'Unauthorization' })

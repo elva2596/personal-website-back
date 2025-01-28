@@ -92,7 +92,6 @@ const getExhitions = async (req, res) => {
     if (meta) {
       JSON.parse(meta).forEach((key) => (limitQuery[key] = 1))
     }
-    console.log('limitQuery:', JSON.parse(meta), limitQuery)
     const query = ExhModel.find({}, limitQuery).sort({ order: -1 })
     if (pageSize && pageNum) {
       await query.skip((Number(pageNum) - 1) * pageSize).limit(Number(pageSize))

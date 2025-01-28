@@ -34,7 +34,7 @@ const getBio = async (req, res) => {
 }
 const updateBio = async (req, res) => {
   try {
-    await BioModel.updateOne({}, { $set: req.body }).exec()
+    await BioModel.updateOne({}, { $set: req.body }, { upsert: true }).exec()
     res.send({
       status: 1,
       msg: 'success',
